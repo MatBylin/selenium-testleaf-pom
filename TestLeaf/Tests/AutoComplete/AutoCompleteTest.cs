@@ -22,6 +22,8 @@ namespace TestLeaf.Tests.AutoComplete
         public void AutoCompleteAndClick()
         {
             Console.WriteLine("AutoComplete sublist count is : {0}", AutoCompletePage.ChooseFromAutoList());
+
+            Assert.That(AutoCompletePage.AutoCompleteInput.GetAttribute("value"), Is.EqualTo("Appium"));
         }
 
         [TearDown]

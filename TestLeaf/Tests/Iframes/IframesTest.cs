@@ -22,7 +22,9 @@ namespace TestLeaf.Tests.IFrames
         public void ClickFirstIframeButton()
         {
             FramesPage.ClickFirstIframe();
+
             Assert.True(FramesPage.FirstIframeButton.Text.Contains("Clicked"));
+
             driver.SwitchTo().DefaultContent();
         }
 
@@ -30,7 +32,9 @@ namespace TestLeaf.Tests.IFrames
         public void ClickNestedIframe()
         {
             FramesPage.ClickNestedIframe();
+
             Assert.True(FramesPage.NestedIframeButton.Text.Contains("Clicked"));
+
             driver.SwitchTo().DefaultContent();
         }
 
@@ -38,6 +42,8 @@ namespace TestLeaf.Tests.IFrames
         public void IframesCount()
         {
             Console.WriteLine(FramesPage.IframeCount());
+
+            Assert.True(FramesPage.IframeCount() == 3);
         }
 
         [OneTimeTearDown]

@@ -13,6 +13,7 @@ namespace TestLeaf.Tests.Droppable
         {
             InitBrowser(BrowserType.Firefox);
             driver.Navigate().GoToUrl(DroppablePage.BaseUrl);
+            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
 
             DroppablePage = new DroppablePage(driver);
         }
@@ -21,7 +22,7 @@ namespace TestLeaf.Tests.Droppable
         public void DragElementToTarget()
         {
             DroppablePage.DragElementToDropBox();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
+
             Assert.IsTrue(DroppablePage.DroppableBoxText.Text == "Dropped!");
         }
 

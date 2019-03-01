@@ -20,6 +20,10 @@ namespace TestLeaf.PageObjects
         [CacheLookup]
         IWebElement AgeTextBox { get; set; }
 
+        [FindsBy(How = How.Id, Using = "ui-id-12")]
+        [CacheLookup]
+        public IWebElement HideMe { get; set; }
+
         public void SetMouseOver()
         {
             var action = new Actions(_driver);

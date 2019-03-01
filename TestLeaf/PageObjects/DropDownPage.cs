@@ -43,7 +43,7 @@ namespace TestLeaf.PageObjects
 
         public void SelectByIndex()
         {
-            IndexDropdown.SelectByIndex(1);
+            IndexDropdown.SelectByIndex(2);
         }
 
         public void SelectByText()

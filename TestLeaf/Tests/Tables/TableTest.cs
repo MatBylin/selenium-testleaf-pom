@@ -16,6 +16,8 @@ namespace TestLeaf.Tests.Tables
         {
             InitBrowser(BrowserType.Firefox);
             driver.Navigate().GoToUrl(TablePage.BaseUrl);
+            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
+
             TablePage = new TablePage(driver);
         }
 
@@ -23,25 +25,31 @@ namespace TestLeaf.Tests.Tables
         public void HowManyColumns()
         {
             Console.WriteLine(TablePage.ColumnsCount());
+
+            Assert.True(TablePage.ColumnsCount() == 3);
         }
 
         [Test, Order(2)]
         public void HowManyRows()
         {
             Console.WriteLine(TablePage.RowsCount());
+
+            Assert.True(TablePage.RowsCount() == 4);
         }
 
         [Test, Order(3)]
         public void GetTheValueOfProgressInteract()
         {
-            Console.WriteLine(TablePage.GetTheValueOfTableIndex("Progress", 2));
+            string value = TablePage.GetTheValueOfTableIndex("Progress", 2);
+
+            Assert.True(value == "80%");
         }
 
         [Test, Order(4)]
         public void CheckVitalTakForLeastCompleted()
         {
             IWebElement cell = TablePage.GetTheCellAsIWebElement("Vital Task", 3);
-            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
+
             cell.Click();
         }
 

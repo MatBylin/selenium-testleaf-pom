@@ -20,7 +20,7 @@ namespace TestLeaf.PageObjects
 
         [FindsBy(How = How.ClassName, Using = "ui-widget-content")]
         [CacheLookup]
-        IList<IWebElement> ListOfItems { get; set; }
+        public IList<IWebElement> ListOfItems { get; set; }
 
         public void SelectFirstThree()
         {

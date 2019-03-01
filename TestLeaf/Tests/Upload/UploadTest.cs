@@ -21,7 +21,7 @@ namespace TestLeaf.Tests.Upload
         public void UploadFile()
         {
             //The path to file must exist
-            string path = "D:\\upload\\myfile.txt";
+            string path = "F:\\upload\\file.txt";
 
             UploadPage.Upload(path);
             //Thread.Sleep(1000);

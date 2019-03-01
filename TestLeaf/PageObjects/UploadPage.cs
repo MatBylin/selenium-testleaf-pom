@@ -26,6 +26,7 @@ namespace TestLeaf.PageObjects
             if (File.Exists(path))
                 UploadButton.SendKeys(path);
             else
+                Console.WriteLine("!");
                 Assert.Fail("Path do not exist");
         }
     }

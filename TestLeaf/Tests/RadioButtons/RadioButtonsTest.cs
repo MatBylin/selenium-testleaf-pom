@@ -23,19 +23,24 @@ namespace TestLeaf.Tests.RadioButtons
         public void AreYouEnjoying()
         {
             RadioButtonPage.EnjoyClasses();
+
+            Assert.True(RadioButtonPage.EnjoyYesRadioButton.Selected);
         }
 
         [Test, Order(2)]
         public void WhitchIsDefaultRadio()
         {
             Console.WriteLine("The one with value: " + RadioButtonPage.WhitchIsDefault());
+
+            Assert.True(RadioButtonPage.DefaultButtons[1].Selected);
         }
 
         [Test, Order(3)]
         public void SelectYourAgeRadio()
         {
             RadioButtonPage.SelectYourAgeGroup();
-            Thread.Sleep(500);
+
+            Assert.True(RadioButtonPage.AgeButtons[1].Selected);
         }
 
         [OneTimeTearDown]

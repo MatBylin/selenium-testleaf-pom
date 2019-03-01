@@ -23,7 +23,7 @@ namespace TestLeaf.PageObjects
 
         [FindsBy(How = How.ClassName, Using = "ui-state-default")]
         [CacheLookup]
-        IList<IWebElement> ListOfItems { get; set; }
+        public IList<IWebElement> ListOfItems { get; set; }
 
 
 

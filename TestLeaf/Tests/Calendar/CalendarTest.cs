@@ -21,6 +21,8 @@ namespace TestLeaf.Tests.Calendar
         public void SelectDayOfMonth()
         {
             CalendarPage.SearchForDay("10");
+
+            Assert.That(CalendarPage.CalendarTextBox.GetAttribute("value") != null);
         }
 
         [OneTimeTearDown]

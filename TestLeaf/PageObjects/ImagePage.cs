@@ -41,7 +41,7 @@ namespace TestLeaf.PageObjects
         public void ClickUsingKeyboard()
         {
             Actions act = new Actions(_driver);
-            act.Click(KeyBoardImage);
+            act.Click(KeyBoardImage).Build().Perform();
         }
     }
 }

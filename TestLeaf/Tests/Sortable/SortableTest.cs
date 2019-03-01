@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using TestLeaf.Base;
 using TestLeaf.PageObjects;
 
@@ -22,6 +23,10 @@ namespace TestLeaf.Tests.Sortable
         {
             SortablePage.FirstToLast();
             SortablePage.LastToFirst();
+
+            IWebElement firstItem = driver.FindElement(By.ClassName("ui-state-default"));
+
+            Assert.True(firstItem.Text == "Item 7");
         }
 
         [TearDown]

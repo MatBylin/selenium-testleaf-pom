@@ -14,6 +14,7 @@ namespace TestLeaf.Tests.Links
         {
             InitBrowser(BrowserType.Firefox);
             driver.Navigate().GoToUrl(LinkPage.BaseUrl);
+            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
 
             LinksPage = new LinkPage(driver);
         }
@@ -22,35 +23,44 @@ namespace TestLeaf.Tests.Links
         public void ClickFirstHomePage()
         {
             LinksPage.ClickFirstHomePage();
+            
+            Assert.AreEqual(driver.Title, "TestLeaf - Selenium Playground");
+
             driver.Navigate().Back();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
         }
 
         [Test]
         public void WhereToRedirect()
         {
             Console.WriteLine(LinksPage.WhereRedirect());
+
+            Assert.True(LinksPage.WhereRedirect() == "http://www.leafground.com/pages/Button.html");
         }
 
         [Test]
         public void VerifyBrokenButton()
         {
             bool isBroken = LinksPage.VerifyBroken();
-            Console.WriteLine(isBroken);
+
+            Assert.True(isBroken);
         }
 
         [Test]
         public void ClickSecondHomePage()
         {
             LinksPage.ClickSecondHomePage();
+
+            Assert.AreEqual(driver.Title, "TestLeaf - Selenium Playground");
+
             driver.Navigate().Back();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
         }
 
         [Test]
         public void HowManyLinks()
         {
             Console.WriteLine(LinksPage.HowManyLinks());
+
+            Assert.True(LinksPage.HowManyLinks() == 6);
         }
 
         [OneTimeTearDown]

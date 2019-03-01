@@ -20,14 +20,26 @@ namespace TestLeaf.Tests.Draggable
         [Test, Order(1)]
         public void DragMeAroundByOffset()
         {
+            var startPos = DraggablePage.DraggableBox.Location;
             DraggablePage.DragAround();
+            var endPosition = DraggablePage.DraggableBox.Location;
+
+            Assert.True(startPos.X == (endPosition.X - 100));
+
             DraggablePage.MoveToStartPosition();
         }
 
         [Test, Order(2)]
         public void DragMeAroundToTheRightMostCorner()
         {
+            var startPos = DraggablePage.DraggableBox.Location;
             DraggablePage.DragAroundToTheContainerCorner();
+
+            var box = DraggablePage.DraggableBox;
+            var container = DraggablePage.ContainerDiv;
+
+            Assert.True(box.Location.X == (startPos.X + container.Size.Width - box.Size.Width));
+
             DraggablePage.MoveToStartPosition();
         }
 

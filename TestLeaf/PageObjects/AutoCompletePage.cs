@@ -23,7 +23,7 @@ namespace TestLeaf.PageObjects
 
         [FindsBy(How = How.Id, Using = "tags")]
         [CacheLookup]
-        IWebElement AutoCompleteInput { get; set; }
+        public IWebElement AutoCompleteInput { get; set; }
 
         public int ChooseFromAutoList()
         {

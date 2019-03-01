@@ -22,13 +22,22 @@ namespace TestLeaf.Tests.Selectable
         public void SelectFirstThreeElements()
         {
             SelectablePage.SelectFirstThree();
+
+            Assert.True(SelectablePage.ListOfItems[0].GetAttribute("class")
+                == "ui-widget-content ui-selectee ui-selected");
+            Assert.True(SelectablePage.ListOfItems[1].GetAttribute("class")
+                == "ui-widget-content ui-selectee ui-selected");
+            Assert.True(SelectablePage.ListOfItems[2].GetAttribute("class")
+                == "ui-widget-content ui-selectee ui-selected");
         }
 
         [Test, Order(2)]
         public void SelectAllOddsElements()
         {
             SelectablePage.SelectOddsElements();
-            Thread.Sleep(2000);
+
+            Assert.True(SelectablePage.ListOfItems[6].GetAttribute("class")
+                == "ui-widget-content ui-selectee ui-selected");
         }
 
         [TearDown]

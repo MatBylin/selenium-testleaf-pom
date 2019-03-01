@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Threading;
 using TestLeaf.Base;
 using TestLeaf.PageObjects;
 
@@ -14,19 +15,22 @@ namespace TestLeaf.Tests.Images
         {
             InitBrowser(BrowserType.Firefox);
             driver.Navigate().GoToUrl(ImagePage.BaseUrl);
+            Methods.Methods.ImplicitWaitForSeconds(driver, 5);
 
             ImagesPage = new ImagePage(driver);
         }
 
-        [Test]
+        [Test, Order(1)]
         public void ClickHomePageImage()
         {
             ImagesPage.ClickHomeImage();
+
+            Assert.True(driver.Title == "TestLeaf - Selenium Playground");
+
             driver.Navigate().Back();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
         }
 
-        [Test]
+        [Test, Order(2)]
         public void VerifyBrokenImage()
         {
             if (ImagesPage.IsBroken())
@@ -35,12 +39,12 @@ namespace TestLeaf.Tests.Images
                 Console.WriteLine("Image is not broken");
         }
 
-        [Test]
+        [Test, Order(3)]
         public void ClickKeyboardImage()
         {
             ImagesPage.ClickUsingKeyboard();
+
             driver.Navigate().Back();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
         }
 
         [OneTimeTearDown]

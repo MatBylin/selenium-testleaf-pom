@@ -14,6 +14,7 @@ namespace TestLeaf.Tests.Alerts
         {
             InitBrowser(BrowserType.Firefox);
             driver.Navigate().GoToUrl(AlertPage.BaseUrl);
+            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
 
             AlertPage = new AlertPage(driver);
         }
@@ -22,32 +23,32 @@ namespace TestLeaf.Tests.Alerts
         public void DisplayAlertBox()
         {
             AlertPage.DisplayAlertBox();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
-            Assert.AreEqual(driver.Title, "TestLeaf - Interact with Alerts");
+
+            Assert.True(driver.Title == "TestLeaf - Interact with Alerts");
         }
 
         [Test]
         public void DisplayAndConfirmAlertBox()
         {
             AlertPage.DisplayAndConfirmAlertBox();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
-            Assert.AreEqual(driver.Title, "TestLeaf - Interact with Alerts");
+
+            Assert.True(driver.Title == "TestLeaf - Interact with Alerts");
         }
 
         [Test]
         public void DisplayAndPromptAlertBox()
         {
             AlertPage.PromptAlertBox();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
-            Assert.AreEqual(driver.Title, "TestLeaf - Interact with Alerts");
+
+            Assert.True(driver.Title == "TestLeaf - Interact with Alerts");
         }
 
         [Test]
         public void IsLineBreaksAlertBox()
         {
             Console.WriteLine(AlertPage.LineBreaksAlertBox());
-            Methods.Methods.ImplicitWaitForSeconds(driver, 2);
-            Assert.AreEqual(driver.Title, "TestLeaf - Interact with Alerts");
+
+            Assert.True(driver.Title == "TestLeaf - Interact with Alerts");
         }
 
         [OneTimeTearDown]

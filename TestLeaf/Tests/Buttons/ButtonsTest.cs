@@ -14,6 +14,7 @@ namespace TestLeaf.Tests.Buttons
         {
             InitBrowser(BrowserType.Firefox);
             driver.Navigate().GoToUrl(ButtonPage.BaseUrl);
+            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
 
             ButtonPage = new ButtonPage(driver);
         }
@@ -23,7 +24,8 @@ namespace TestLeaf.Tests.Buttons
         {
             ButtonPage.ClickHomePage();
             driver.Navigate().Back();
-            Methods.Methods.ImplicitWaitForSeconds(driver, 3);
+
+            Assert.That(driver.Title == "TestLeaf - Interact with Buttons");
         }
 
         [Test]
@@ -31,12 +33,17 @@ namespace TestLeaf.Tests.Buttons
         {
             int[] pos = ButtonPage.GetPosition();
             Console.WriteLine("X postion is {0}, Y position is {1}", pos[0], pos[1]);
+
+            Assert.That(pos[0] > 0);
+            Assert.That(pos[1] > 0);
         }
 
         [Test]
         public void GetButtonColor()
         {
-            Console.WriteLine(ButtonPage.GetColor());
+            var buttonColor = ButtonPage.GetColor();
+
+            Assert.That(buttonColor, Is.EqualTo("rgb(144, 238, 144)"));
         }
 
         [Test]
@@ -44,6 +51,9 @@ namespace TestLeaf.Tests.Buttons
         {
             int[] pos = ButtonPage.GetSize();
             Console.WriteLine("Width is {0}, Height is {1}", pos[0], pos[1]);
+
+            Assert.That(pos[0] > 0);
+            Assert.That(pos[1] > 0);
         }
 
         [OneTimeTearDown]
